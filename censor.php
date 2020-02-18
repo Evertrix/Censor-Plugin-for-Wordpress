@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: Censor Plugin
+ * Plugin Name: Censorship Plugin
  * Plugin URI: https://asd.com/
- * Description: Censoring/Replasing specific words with selected characters
+ * Description: Censoring/Repalasing specific words with selected characters
  * Version: 1.1.0
  * Author: Eugene
  * Author URI: https://asd.com
@@ -13,24 +13,24 @@
 
 
 
-function cenz_title($title, $id = null)
+function censor_title($title, $id = null)
 {
-    return cenz($title);
+    return censor($title);
 }
 
-function cenz_content($content)
+function censor_content($content)
 {
-    return cenz($content);
+    return censor($content);
 }
 
 
 // Replacing a value with a censor
-function cenz($text)
+function censor($text)
 {
-    $cenzured_words = get_option('cenz');
-    $cenzured_array = explode(", ", $cenzured_words);
+    $censor_words = get_option('cenz');
+    $censor_array = explode(", ", $censor_words);
 
-    foreach ($cenzured_array as $word) {
+    foreach ($censor_array as $word) {
         $word = trim($word);
         if (stripos($text, $word, " ") !== FALSE) {
             $text = str_ireplace($word, get_option('zip'), $text);
@@ -41,8 +41,8 @@ function cenz($text)
 }
 
 // Filtering title and content in a post with censor
-add_filter('the_title', 'cenz_title', 10, 2);
-add_filter('the_content', 'cenz_content');
+add_filter('the_title', 'censor_title', 10, 2);
+add_filter('the_content', 'censor_content');
 
 
 // Adding admin menu
@@ -79,7 +79,7 @@ function plugin_settings()
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Add Character</th>
-                    <td><input type="text" name="cenz" value="<?php echo get_option('cenz'); ?>"/>
+                    <td><input type="text" name="cenz" value="<?php echo get_option('censor'); ?>"/>
                         <p>After every word added for censorship put ", " before the word</p>
                     </td>
                 </tr>

@@ -27,7 +27,7 @@ function censor_content($content)
 // Replacing a value with a censor
 function censor($text)
 {
-    $censor_words = get_option('cenz');
+    $censor_words = get_option('censor');
     $censor_array = explode(", ", $censor_words);
 
     foreach ($censor_array as $word) {
@@ -61,7 +61,7 @@ function plugin_create_menu()
 function register_plugin_settings()
 {
     //register our settings
-    register_setting('plugin-group', 'cenz');
+    register_setting('plugin-group', 'censor');
     register_setting('plugin-group', 'zip');
 }
 
@@ -71,7 +71,7 @@ function plugin_settings()
 {
     ?>
     <div class="wrap">
-        <h1>Censor Plugin</h1>
+        <h1>Censorship Plugin</h1>
         <form method="post" action="options.php">
             <?php settings_fields('plugin-group'); ?>
             <?php do_settings_sections('plugin-group'); ?>
@@ -79,14 +79,14 @@ function plugin_settings()
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Add Character</th>
-                    <td><input type="text" name="cenz" value="<?php echo get_option('censor'); ?>"/>
+                    <td><input type="text" name="censor" value="<?php echo get_option('censor'); ?>"/>
                         <p>After every word added for censorship put ", " before the word</p>
                     </td>
                 </tr>
 
 
                 <tr valign="top">
-                    <th scope="row">Add Zipper</th>
+                    <th scope="row">Add Censorship</th>
                     <td><input type="text" name="zip" value="<?php echo get_option('zip'); ?>"/>
                     </td>
                 </tr>

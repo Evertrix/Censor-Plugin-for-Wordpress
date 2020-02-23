@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Censorship Plugin
  * Plugin URI: https://asd.com/
- * Description: Censoring/Repalasing specific words with selected characters
+ * Description: Censoring/Replacing specific words with selected characters
  * Version: 1.1.0
  * Author: Eugene
  * Author URI: https://asd.com
